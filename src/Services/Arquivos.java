@@ -7,13 +7,10 @@ import java.io.IOException;
 
 
 public class Arquivos {
-    private static String path = "C:\\Users\\Rony Fonseca de Lima\\IdeaProjects\\Pet-Prime\\data\\";
 
-    public static BufferedWriter criarAquivo(String nome){
-        path = path + nome;
+    public static BufferedWriter criarAquivo(String path){
         try{
-
-            BufferedWriter file = new BufferedWriter(new FileWriter(path));
+            BufferedWriter file = new BufferedWriter(new FileWriter(path, true));
             return file;
         }catch(IOException e){
             e.printStackTrace();
@@ -21,8 +18,7 @@ public class Arquivos {
         return null;
     }
 
-    public static BufferedReader lerAquivo(String nome){
-        path = path + nome;
+    public static BufferedReader lerAquivo(String path){
         try{
             BufferedReader file = new BufferedReader(new FileReader(path));
             return file;
