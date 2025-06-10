@@ -18,19 +18,18 @@ public class Produto {
                 proximoId = idProduto + 1;
             }
         }
-        // Construtor para novos produtos onde o ID é gerado
+        // Construtor para novos produtos onde o ID ja for gerado
         public Produto(String nome, String descricao, double preco, int estoque) {
             this(proximoId++, nome, descricao, preco, estoque);
         }
 
-        // Getters
+
         public int getIdProduto() { return idProduto; }
         public String getNome() { return nome; }
         public String getDescricao() { return descricao; }
         public double getPreco() { return preco; }
         public int getEstoque() { return estoque; }
 
-        // Setters
         public void setNome(String nome) { this.nome = nome; }
         public void setDescricao(String descricao) { this.descricao = descricao; }
         public void setPreco(double preco) { this.preco = preco; }
