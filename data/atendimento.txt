@@ -1,6 +1,15 @@
-Inicio: 03/06/2025 - 15:17hrs | Termino: 15:17hrs
-Trabalho: Tosa - Resposável: Demi
+Inicio: 10/06/2025 - 14:20hrs | Termino: 14:20hrs
+Trabalho: Tosa - Resposável: null
 
-Inicio: 03/06/2025 - 15:18hrs | Termino: 15:19hrs
-Trabalho: Banho - Resposável: Rony
+Inicio: 10/06/2025 - 14:20hrs | Termino: 14:21hrs
+Trabalho: Banho - Resposável: null
+
+Inicio: 10/06/2025 - 14:36hrs | Termino: 14:36hrs
+Trabalho: Tosa - Resposável: null
+
+Inicio: 10/06/2025 - 14:36hrs | Termino: 14:39hrs
+Trabalho: Tosa - Resposável: null
+
+Inicio: 10/06/2025 - 14:40hrs | Termino: 14:41hrs
+Trabalho: Tosa - Resposável: null
 
