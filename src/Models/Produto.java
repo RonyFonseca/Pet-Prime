@@ -17,8 +17,8 @@ public class Produto {
         if (idProduto >= proximoId) { // Ajusta o proximoId se carregado do arquivo
             proximoId = idProduto + 1;
         }
-        }
-        // Construtor para novos produtos onde o ID ja for gerado
+    }
+    // Construtor para novos produtos onde o ID ja for gerado
     public Produto(String nome, String descricao, double preco, int estoque) {
         this(proximoId++, nome, descricao, preco, estoque);
     }
@@ -65,4 +65,3 @@ public class Produto {
         return "ID: " + idProduto + "| Nome: '" + nome + '\'' + "| Preço: R$" + String.format("%.2f", preco) + "| Estoque: " + estoque;
     }
 }
-

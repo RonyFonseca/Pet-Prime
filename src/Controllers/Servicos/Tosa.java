@@ -19,18 +19,19 @@ public class Tosa implements Servico {
 
     @Override
     public String iniciarTrabalho(){
-        criarAquivo("atendimento", this.nome, SERVICO);
+        this.nome = procurarUserNoFile();
+        criarAquivo(this.nome, SERVICO);
         return "Inicio: "+data()+" - "+ hora()+"hrs\n"+"Trabalho: "+SERVICO+" - Resposável: "+nome;
     };
 
     @Override
     public String finalizarTrabalho(){
-        lerAquivo("atendimento");
+        lerAquivo();
         return "Termino: "+data()+" - "+ hora()+"hrs\n"+"Trabalho: "+SERVICO+" - Resposável: "+nome;
     }
 
     @Override
-    public void getDescricao(){
-        System.out.println("Responsável: "+nome+"\nServiço: "+SERVICO+"\nData: "+data()+"\nHora: "+hora());
+    public String toString(){
+        return "Responsável: "+nome+"\nServiço: "+SERVICO+"\nData: "+data()+"\nHora: "+hora();
     }
 }

@@ -13,7 +13,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 
 public class ProdutoService {
-    private static final String FILENAME = "C:\\Users\\PROFESSOR\\IdeaProjects\\Pet-Prime\\src\\data\\estoque.txt";
+    private static final String FILENAME = "C:\\Users\\PROFESSOR\\IdeaProjects\\Pet-Prime2\\data\\estoque.txt";
     private static final String DELIMITER = ";";
     private static Scanner scanner = new Scanner(System.in);
     private List<Produto> produtos = new ArrayList<>();
