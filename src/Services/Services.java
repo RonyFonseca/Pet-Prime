@@ -198,8 +198,8 @@ public class Services {
     }
 
     public static String somarHoras(ArrayList array){
-        int totalHoras = 0;
-        int totalMinutos = 0;
+        int horas =0;
+        int minutos = 0;
         //tosa
         try{
             for(int i = 0; i < array.size(); i++){
@@ -207,28 +207,41 @@ public class Services {
                 String horasInicio = linha.split(" ")[3].split("\\+")[0];
                 String horasFinal = linha.split(" ")[6].split("-")[0];
 
-                int horaInicio = Integer.parseInt(horasInicio.split(":")[0]);
-                int minutoInicio = Integer.parseInt(horasInicio.split(":")[1]);
+                String digitosIniciaisHoras = horasInicio.split(":")[0];
+                String digitosIniciaisMinutos = horasInicio.split(":")[1];
 
-                int horaFinal = Integer.parseInt(horasFinal.split(":")[0]);
-                int minutoFinal = Integer.parseInt(horasFinal.split(":")[1]);
+                String digitosFinalHoras = horasFinal.split(":")[0];
+                String digitosFinalMinutos = horasFinal.split(":")[1];
 
-                int diferencaHoras = horaFinal - horaInicio;
-                int diferencaMinutos = minutoFinal - minutoInicio;
+                double horas1 = (Double.parseDouble(digitosFinalHoras) - Double.parseDouble(digitosIniciaisHoras));
+                double minutos1;
 
-                if (diferencaMinutos < 0) {
-                    diferencaMinutos += 60;
-                    diferencaHoras -= 1;
+                if(Double.parseDouble(digitosIniciaisMinutos) < Double.parseDouble(digitosFinalMinutos)){
+                    minutos1 = (Double.parseDouble(digitosFinalMinutos) - Double.parseDouble(digitosIniciaisMinutos));
+                } else {
+                    minutos1 = Double.parseDouble(digitosIniciaisMinutos) -  Double.parseDouble(digitosFinalMinutos);
                 }
 
-                totalHoras += diferencaHoras;
-                totalMinutos += diferencaMinutos;
+                horas += (int) horas1;
+                minutos += (int) minutos1;
             }
 
-            totalHoras += totalMinutos / 60;
-            totalMinutos = totalMinutos % 60;
+            if(minutos>60){
+                while(minutos>=60){
+                    horas++;
+                    minutos = minutos-60;
+                }
+            }
 
-            return String.format("%02d:%02d", totalHoras, totalMinutos);
+            if(horas<10 && minutos<10){
+                return "0"+horas + ":" + "0"+minutos;
+            }else if(horas < 10 && minutos>10){
+                return "0"+horas + ":" + minutos;
+            }else if(horas > 10 && minutos<10){
+                return horas + ":" + "0"+minutos;
+            } else {
+                return horas + ":" + minutos;
+            }
         }catch(ArrayIndexOutOfBoundsException e){
             return "Em serviço";
         }
