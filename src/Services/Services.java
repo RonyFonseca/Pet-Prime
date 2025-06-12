@@ -50,7 +50,7 @@ public class Services {
     }
 
     public static Boolean criarAquivo( String nome, String servico){
-        final String pathName = "C:\\Users\\PROFESSOR\\IdeaProjects\\Pet-Prime2\\data\\atendimento.txt";
+        final String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\atendimento.txt";
         try{
             if(avaliarArquivo()){
                 BufferedWriter file = new BufferedWriter(new FileWriter(pathName, true));
@@ -87,7 +87,7 @@ public class Services {
     }
 
     public static Boolean lerAquivo(){
-        final String pathName = "C:\\Users\\PROFESSOR\\IdeaProjects\\Pet-Prime2\\data\\atendimento.txt";
+        final String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\atendimento.txt";
         try{
             ArrayList<String> arquivo = passarTxtPraArray(pathName);
 
@@ -112,7 +112,7 @@ public class Services {
     }
 
     public static Boolean avaliarArquivo(){
-        final String pathName = "C:\\Users\\PROFESSOR\\IdeaProjects\\Pet-Prime2\\data\\atendimento.txt";
+        final String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\atendimento.txt";
         try{
             BufferedReader file = new BufferedReader(new FileReader(pathName));
             String linha;
@@ -148,7 +148,7 @@ public class Services {
     }
 
     public static Boolean cadastrarUserNoFile(String nome){
-        final String pathName = "C:\\Users\\PROFESSOR\\IdeaProjects\\Pet-Prime2\\data\\user.txt";
+        final String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\user.txt";
         try{
             BufferedWriter file = new BufferedWriter(new FileWriter(pathName));
             file.write(nome);
@@ -161,7 +161,7 @@ public class Services {
     }
 
     public static String procurarUserNoFile(){
-        final String pathName = "C:\\Users\\PROFESSOR\\IdeaProjects\\Pet-Prime2\\data\\user.txt";
+        final String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\user.txt";
         try{
             BufferedReader file = new BufferedReader(new FileReader(pathName));
             String nome = file.readLine();

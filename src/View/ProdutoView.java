@@ -6,8 +6,8 @@ import Models.Produto;
 import java.util.List;
 
 public class ProdutoView {
+    Services services= new Services();
     public int exibirMenuProdutos() {
-        Services.limparTela();
         System.out.println("=== Gerenciamento de Produtos (Estoque) ===");
         System.out.println("1. Cadastrar Novo Produto");
         System.out.println("2. Listar Todos os Produtos");
@@ -16,11 +16,16 @@ public class ProdutoView {
         System.out.println("5. Atualizar Estoque de Produto");
         System.out.println("6. Remover Produto");
         System.out.println("0. Voltar ao Menu Principal");
-        return ProdutoService.lerInteiro("Escolha uma opção");
+
+        int opc = services.criarPergunta("Escolha uma opção", 1);
+        if(services.validarOpcoesMenu(6, opc)){
+            return opc;
+        } else {
+            return 400;
+        }
     }
 
     public Produto solicitarDadosNovoProduto() {
-        Services.limparTela();
         System.out.println("--- Cadastro de Novo Produto ---");
         String nome = ProdutoService.lerString("Nome do produto");
         String descricao = ProdutoService.lerString("Descrição");
@@ -30,7 +35,6 @@ public class ProdutoView {
     }
 
     public void listarProdutos(List<Produto> produtos) {
-        Services.limparTela();
         System.out.println("--- Lista de Produtos ---");
         if (produtos.isEmpty()) {
             System.out.println("Nenhum produto cadastrado.");
@@ -47,7 +51,6 @@ public class ProdutoView {
     }
 
     public Produto solicitarDadosAtualizacaoProduto(Produto produtoExistente) {
-        Services.limparTela();
         System.out.println("--- Atualização de Produto ID: " + produtoExistente.getIdProduto() + " ---");
         System.out.println("Deixe em branco para manter o valor atual, exceto para preço e estoque (digite o novo valor).");
 
@@ -74,7 +77,6 @@ public class ProdutoView {
     }
 
     public void exibirDetalhesProduto(Produto produto) {
-        Services.limparTela();
         System.out.println("--- Detalhes do Produto ---");
         if (produto != null) {
             System.out.println(produto.toString());

@@ -8,7 +8,7 @@ import static Services.Services.passarTxtPraArray;
 import static Services.Services.somarHoras;
 
 public class RelatorioTrabalhos extends RelatorioController {
-    final private String pathName = "C:\\Users\\PROFESSOR\\IdeaProjects\\Pet-Prime2\\data\\atendimento.txt";
+    final private String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\atendimento.txt";
     @Override
     public void gerarRelatorio(){
         ArrayList<String> arquivo = passarTxtPraArray(pathName);
