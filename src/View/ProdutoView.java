@@ -3,41 +3,66 @@ package View;
 import Services.ProdutoService;
 import Services.Services;
 import Models.Produto;
+
+import java.sql.SQLOutput;
 import java.util.List;
+import static View.Menus.*;
 
 public class ProdutoView {
-    Services services= new Services();
     public int exibirMenuProdutos() {
-        System.out.println("=== Gerenciamento de Produtos (Estoque) ===");
-        System.out.println("1. Cadastrar Novo Produto");
-        System.out.println("2. Listar Todos os Produtos");
-        System.out.println("3. Buscar Produto por ID");
-        System.out.println("4. Atualizar Produto");
-        System.out.println("5. Atualizar Estoque de Produto");
-        System.out.println("6. Remover Produto");
-        System.out.println("0. Voltar ao Menu Principal");
-
-        int opc = services.criarPergunta("Escolha uma opção", 1);
-        if(services.validarOpcoesMenu(6, opc)){
-            return opc;
-        } else {
-            return 400;
-        }
+        System.out.println("=== Gerenciamento de Produtos ("+GREEN+"Estoque"+RESET+") ===");
+        System.out.println(CYAN+"[1]"+RESET+"-"+GREEN+"Cadastrar Novo Produto"+RESET);
+        System.out.println(CYAN+"[2]"+RESET+"-"+GREEN+"Listar Todos os Produtos"+RESET);
+        System.out.println(CYAN+"[3]"+RESET+"-"+GREEN+"Buscar Produto por ID"+RESET);
+        System.out.println(CYAN+"[4]"+RESET+"-"+GREEN+"Atualizar Produto"+RESET);
+        System.out.println(CYAN+"[5]"+RESET+"-"+GREEN+"Atualizar Estoque de Produto"+RESET);
+        System.out.println(CYAN+"[6]"+RESET+"-"+GREEN+"Remover Produto"+RESET);
+        System.out.println(CYAN+"[0]"+RESET+"-"+RED+"Voltar"+RESET);
+        return ProdutoService.lerInteiro("Escolha uma "+CYAN+"opção"+RESET);
     }
 
     public Produto solicitarDadosNovoProduto() {
-        System.out.println("--- Cadastro de Novo Produto ---");
-        String nome = ProdutoService.lerString("Nome do produto");
-        String descricao = ProdutoService.lerString("Descrição");
-        double preco = ProdutoService.lerDouble("Preço");
-        int estoque = ProdutoService.lerInteiro("Quantidade em estoque inicial");
-        return new Produto(nome, descricao, preco, estoque); // Usa construtor que gera ID
+        while(true){
+            System.out.println("--- Cadastro de Novo Produto ---");
+            String nome = ProdutoService.lerString("Nome do produto");
+
+            if(!nome.isEmpty()){
+                String descricao = ProdutoService.lerString("Descrição");
+                if(!descricao.isEmpty()){
+                    double preco = ProdutoService.lerDouble("Preço");
+                    if(!(preco <= 0)){
+                        int estoque = ProdutoService.lerInteiro("Quantidade em estoque inicial");
+                        if(!(estoque <= 0)){
+                            return new Produto(nome.trim(), descricao.trim(), preco, estoque);
+                        }else{
+                            System.out.println("-----------------------["+RED+"REFLITA"+RESET+"]------------------------");
+                            System.out.println("O estoque não pode ser negativo !");
+                            System.out.println("E por "+RED+"consequência"+RESET+" vai fazer tudo do 0");
+                            System.out.println("--------------------------------------------------------");
+                        }
+                    }else{
+                        System.out.println("-----------------------["+RED+"REFLITA"+RESET+"]------------------------");
+                        System.out.println("O preço não pode ser negativo !");
+                        System.out.println("E por "+RED+"consequência"+RESET+" vai fazer tudo do 0");
+                        System.out.println("--------------------------------------------------------");
+                    }
+                }else{
+                    System.out.println("-----------------------["+RED+"REFLITA"+RESET+"]------------------------");
+                    System.out.println("A descrição não pode estar vazia!");
+                    System.out.println("E por "+RED+"consequência"+RESET+" vai fazer tudo do 0");
+                    System.out.println("--------------------------------------------------------");
+                }
+            }else{System.out.println("O nome não pode estar vazio!");}
+
+
+        }
+        // Usa construtor que gera ID
     }
 
     public void listarProdutos(List<Produto> produtos) {
-        System.out.println("--- Lista de Produtos ---");
+        System.out.println("--- Lista de"+ GREEN+" Produtos "+RESET+ "---");
         if (produtos.isEmpty()) {
-            System.out.println("Nenhum produto cadastrado.");
+            System.out.println(RED+"Nenhum"+RESET+ " produto cadastrado.");
         } else {
             for (Produto produto : produtos) {
                 System.out.println(produto.toString());
@@ -71,9 +96,9 @@ public class ProdutoView {
         return ProdutoService.lerInteiro("Digite a nova quantidade em estoque");
     }
 
-    public boolean confirmarAcao(String mensagem) {
-        String resposta = ProdutoService.lerString(mensagem + " (S/N)").toUpperCase();
-        return resposta.equals("S");
+    public boolean confirmarAcao(String msg) {
+        String resposta = ProdutoService.lerString(msg + " (S/N)").toUpperCase().trim();
+        return resposta.equalsIgnoreCase("S") || resposta.equalsIgnoreCase("sim");
     }
 
     public void exibirDetalhesProduto(Produto produto) {

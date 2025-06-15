@@ -11,7 +11,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class Services {
+    private static final String path = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\";
     public static Scanner scanner = new Scanner(System.in);
+
+
+    public static String getPath(){
+        return path;
+    }
 
     public int criarPergunta(String msg, int num){
         Scanner scanner = new Scanner(System.in);
@@ -26,12 +32,6 @@ public class Services {
         String ResultadoPergunta = scanner.next();
         return ResultadoPergunta;
     }
-
-    public static void limparTela() {
-        for(int i=0; i<30; i++){
-            System.out.println(" ");
-        };
-    };
 
     public static String hora(){
         LocalTime newHora = LocalTime.now();
@@ -49,8 +49,8 @@ public class Services {
         return data;
     }
 
-    public static Boolean criarAquivo( String nome, String servico){
-        final String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\atendimento.txt";
+    public static Boolean criarAquivo(String nome, String servico){
+        final String pathName = path+"atendimento.txt";
         try{
             if(avaliarArquivo()){
                 BufferedWriter file = new BufferedWriter(new FileWriter(pathName, true));
@@ -58,6 +58,7 @@ public class Services {
                 file.newLine();
                 file.newLine();
                 file.close();
+                System.out.println("Trabalho iniciado com sucesso !");
                 return true;
             } else {
                 System.out.println("Você ainda está em serviço, finalize para iniciar outro");
@@ -87,7 +88,7 @@ public class Services {
     }
 
     public static Boolean lerAquivo(){
-        final String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\atendimento.txt";
+        final String pathName = path+"atendimento.txt";
         try{
             ArrayList<String> arquivo = passarTxtPraArray(pathName);
 
@@ -104,6 +105,7 @@ public class Services {
                 file1.write(arquivo.get(i)+"\n");
             }
             file1.close();
+            System.out.println("Atendimento finalizado com sucesso!");
             return true;
         }catch(IOException e){
             e.printStackTrace();
@@ -112,7 +114,7 @@ public class Services {
     }
 
     public static Boolean avaliarArquivo(){
-        final String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\atendimento.txt";
+        final String pathName = path+"atendimento.txt";
         try{
             BufferedReader file = new BufferedReader(new FileReader(pathName));
             String linha;
@@ -148,7 +150,7 @@ public class Services {
     }
 
     public static Boolean cadastrarUserNoFile(String nome){
-        final String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\user.txt";
+        final String pathName = path+"user.txt";
         try{
             BufferedWriter file = new BufferedWriter(new FileWriter(pathName));
             file.write(nome);
@@ -161,7 +163,7 @@ public class Services {
     }
 
     public static String procurarUserNoFile(){
-        final String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\user.txt";
+        final String pathName = path+"user.txt";
         try{
             BufferedReader file = new BufferedReader(new FileReader(pathName));
             String nome = file.readLine();
@@ -179,6 +181,7 @@ public class Services {
                 return true;
             }
         }
+        System.out.println("Opção digitada é inválida");
         return false;
     }
 
@@ -213,18 +216,23 @@ public class Services {
                 String digitosFinalHoras = horasFinal.split(":")[0];
                 String digitosFinalMinutos = horasFinal.split(":")[1];
 
+
                 double horas1 = (Double.parseDouble(digitosFinalHoras) - Double.parseDouble(digitosIniciaisHoras));
                 double minutos1;
 
                 if(Double.parseDouble(digitosIniciaisMinutos) < Double.parseDouble(digitosFinalMinutos)){
                     minutos1 = (Double.parseDouble(digitosFinalMinutos) - Double.parseDouble(digitosIniciaisMinutos));
                 } else {
-                    minutos1 = Double.parseDouble(digitosIniciaisMinutos) -  Double.parseDouble(digitosFinalMinutos);
+                    horas-=1;
+                    int min = (int) ((60 -Double.parseDouble(digitosIniciaisMinutos)) + (int) Double.parseDouble(digitosFinalMinutos));
+                    minutos1 =min;
                 }
 
                 horas += (int) horas1;
                 minutos += (int) minutos1;
+
             }
+
 
             if(minutos>60){
                 while(minutos>=60){

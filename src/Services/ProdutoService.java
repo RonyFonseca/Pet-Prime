@@ -11,9 +11,10 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import static Services.Services.getPath;
 
 public class ProdutoService {
-    private static final String FILENAME = "C:\\Users\\PROFESSOR\\IdeaProjects\\Pet-Prime2\\data\\estoque.txt";
+    private static final String FILENAME = getPath()+"estoque.txt";
     private static final String DELIMITER = ";";
     private static Scanner scanner = new Scanner(System.in);
     private List<Produto> produtos = new ArrayList<>();
@@ -87,7 +88,7 @@ public class ProdutoService {
     }
     public static String lerString(String msg) {
         System.out.print(msg + ": ");
-        return scanner.nextLine();
+        return scanner.nextLine().trim();
     }
 
     public static int lerInteiro(String msg) {

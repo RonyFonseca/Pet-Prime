@@ -28,15 +28,19 @@ public class ProdutoController {
                     listarProdutos();
                     break;
                 case 3:
+                    listarProdutos();
                     buscarProdutoPorId();
                     break;
                 case 4:
+                    listarProdutos();
                     atualizarProduto();
                     break;
                 case 5:
+                    listarProdutos();
                     atualizarEstoqueProduto();
                     break;
                 case 6:
+                    listarProdutos();
                     removerProduto();
                     break;
                 case 0:

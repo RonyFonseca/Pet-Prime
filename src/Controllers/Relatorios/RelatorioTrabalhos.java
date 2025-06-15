@@ -6,9 +6,10 @@ import java.util.ArrayList;
 
 import static Services.Services.passarTxtPraArray;
 import static Services.Services.somarHoras;
+import static Services.Services.getPath;
 
 public class RelatorioTrabalhos extends RelatorioController {
-    final private String pathName = "C:\\Users\\Rony\\Documents\\GitHub\\Pet-Prime\\data\\atendimento.txt";
+    final private String pathName =  getPath()+"atendimento.txt";
     @Override
     public void gerarRelatorio(){
         ArrayList<String> arquivo = passarTxtPraArray(pathName);

@@ -1,4 +1,5 @@
 package Models;
+import static View.Menus.*;
 
 public class Produto {
     private int idProduto;
@@ -62,6 +63,6 @@ public class Produto {
     }
     @Override
     public String toString() {
-        return "ID: " + idProduto + "| Nome: '" + nome + '\'' + "| Preço: R$" + String.format("%.2f", preco) + "| Estoque: " + estoque;
+        return CYAN+"ID: "+RESET + idProduto + " | "+ GREEN+"Nome: "+RESET + nome + "| "+ GREEN+"Preço: R$ "+RESET + String.format("%.2f", preco) + "| "+ GREEN+"Estoque: "+RESET + estoque;
     }
 }

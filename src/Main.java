@@ -1,17 +1,17 @@
 import Controllers.FuncionarioController;
 import Controllers.ProdutoController;
-import Controllers.RelatorioController;
 import Controllers.Relatorios.RelatorioTrabalhos;
 import Controllers.Servicos.Adestramento;
 import Controllers.Servicos.Banho;
 import Controllers.Servicos.Tosa;
-import Models.Produto;
 import Models.Servico;
+import Services.ProdutoService;
 import View.Menus;
 import View.ProdutoView;
 
 
 public class Main {
+
     public static void main(String[] args) {
         while (true) {
             FuncionarioController sistemaDeFuncionario = new FuncionarioController();
@@ -48,26 +48,11 @@ public class Main {
                         relatorio.gerarRelatorio();
                     }
                 } else if (opc == 2) {
-                    //ProdutoView menusProduto = new ProdutoView();
-                    //opc = menusProduto.exibirMenuProdutos();
-                    //ProdutoController produto = new ProdutoController();
-                    if(opc==1){
-
-                    } else if(opc == 2){
-                        //Listar Todos os Produtos
-                    } else if(opc == 3){
-                        //Buscar produto
-                    } else if(opc == 4){
-                        //Atualizar estoque
-                    } else if(opc == 5){
-                        //Atualizar Estoque de produto
-                    } else if(opc == 6){
-                        //Remover Produto
-                    } else if(opc == 400){
-                        System.out.println("Opção digitada não está disponível !");
-                    }
+                        ProdutoView produtoView = new ProdutoView();
+                        ProdutoService produtoService = new ProdutoService();
+                        ProdutoController produtoController = new ProdutoController(produtoView, produtoService);
+                        produtoController.gerenciarProdutos();
                 } else if (opc == 0) {
-                    //sair
                     break;
                 }
             }
