@@ -12,7 +12,7 @@ public class FuncionarioController {
             String nome = menus.menuCadastroFuncionario();
 
             if(nome.isEmpty()){
-                System.out.println("Seu nome está sem nada animal !");
+                System.out.println("Seu nome está sem nada !");
                 return false;
             }
 

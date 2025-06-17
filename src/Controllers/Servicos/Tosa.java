@@ -5,7 +5,7 @@ import Models.Servico;
 import static Services.Services.*;
 import static Services.Services.data;
 import static Services.Services.hora;
-import static Services.Services.lerAquivo;
+import static Services.Services.lerArquivo;
 
 public class Tosa implements Servico {
     private String nome;
@@ -20,13 +20,13 @@ public class Tosa implements Servico {
     @Override
     public String iniciarTrabalho(){
         this.nome = procurarUserNoFile();
-        criarAquivo(this.nome, SERVICO);
+        criarArquivo(this.nome, SERVICO);
         return "Inicio: "+data()+" - "+ hora()+"hrs\n"+"Trabalho: "+SERVICO+" - Resposável: "+nome;
     };
 
     @Override
     public String finalizarTrabalho(){
-        lerAquivo();
+        lerArquivo();
         return "Termino: "+data()+" - "+ hora()+"hrs\n"+"Trabalho: "+SERVICO+" - Resposável: "+nome;
     }
 

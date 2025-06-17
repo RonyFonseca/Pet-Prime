@@ -10,11 +10,18 @@ public class Menus {
     public static final String CYAN = "\u001B[36m";
 
     public String menuCadastroFuncionario(){
-        System.out.println("--------["+GREEN+"CADASTRO"+RESET+"]--------");
-        System.out.println(CYAN+"[1]: Nome"+RESET);
-        System.out.println("--------------------------");
-        String nome = services.criarPergunta("Digite seu "+ CYAN+"nome"+RESET+":" );
-        return nome;
+        String nome;
+        while(true){
+            System.out.println("--------["+GREEN+"CADASTRO"+RESET+"]--------");
+            System.out.println(CYAN+"[1]: Nome"+RESET);
+            System.out.println("--------------------------");
+            nome = services.criarPergunta("Digite seu "+ CYAN+"nome"+RESET+":" );
+            if(nome.equalsIgnoreCase("banho")||nome.equalsIgnoreCase("tosa")||nome.equalsIgnoreCase("adestramento")){
+                System.out.println(RED+"Digitar um nome válido"+RESET);
+            }else{
+                return nome;
+            }
+        }
     }
 
     public int menuPrincipal(){

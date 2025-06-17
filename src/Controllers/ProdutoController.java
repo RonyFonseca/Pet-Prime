@@ -75,11 +75,7 @@ public class ProdutoController {
         Optional<Produto> produtoOpt = produtoService.buscarPorId(id);
         if (produtoOpt.isPresent()) {
             Produto produtoParaAtualizar = produtoOpt.get();
-            // A view pode modificar o objeto diretamente ou retornar um novo com os dados
             Produto dadosAtualizados = produtoView.solicitarDadosAtualizacaoProduto(produtoParaAtualizar);
-            // Se a view modificou o original, apenas salvar.
-            // Se retornou um novo, precisa copiar os dados para o original ou reconstruir e salvar.
-            // No exemplo da ProdutoView, ela modifica o objeto passado.
             produtoService.salvar(dadosAtualizados);
             ProdutoService.exibirMensagem("Produto atualizado com sucesso!");
         } else {
@@ -95,7 +91,7 @@ public class ProdutoController {
             if (novaQuantidade >= 0) {
                 Produto produto = produtoOpt.get();
                 produto.setEstoque(novaQuantidade);
-                produtoService.salvar(produto); // Salva o produto com o estoque atualizado
+                produtoService.salvar(produto);
                 produtoService.exibirMensagem("Estoque do produto '" + produto.getNome() + "' atualizado para " + novaQuantidade + " unidades.");
             } else {
                 ProdutoService.exibirMensagem("Quantidade em estoque não pode ser negativa.");
@@ -104,6 +100,7 @@ public class ProdutoController {
             produtoService.exibirMensagem("Produto com ID " + id + " não encontrado.");
         }
     }
+
     private void removerProduto() {
         int id = produtoView.solicitarIdProduto("remover");
         Optional<Produto> produtoOpt = produtoService.buscarPorId(id);

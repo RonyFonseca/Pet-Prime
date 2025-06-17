@@ -56,7 +56,6 @@ public class ProdutoView {
 
 
         }
-        // Usa construtor que gera ID
     }
 
     public void listarProdutos(List<Produto> produtos) {
@@ -68,7 +67,6 @@ public class ProdutoView {
                 System.out.println(produto.toString());
             }
         }
-        // ConsoleUtils.pressioneEnterParaContinuar(); // Movido para o controller
     }
 
     public int solicitarIdProduto(String acao) {
@@ -85,7 +83,6 @@ public class ProdutoView {
         String descricao = ProdutoService.lerString("Nova Descrição (" + produtoExistente.getDescricao() + ")");
         if (!descricao.isEmpty()) produtoExistente.setDescricao(descricao);
 
-        // Para números, geralmente se pede o novo valor diretamente
         produtoExistente.setPreco(ProdutoService.lerDouble("Novo Preço (" + produtoExistente.getPreco() + ")"));
         produtoExistente.setEstoque(ProdutoService.lerInteiro("Novo Estoque (" + produtoExistente.getEstoque() + ")"));
 
@@ -109,6 +106,5 @@ public class ProdutoView {
         } else {
             System.out.println("Produto não encontrado.");
         }
-        // ConsoleUtils.pressioneEnterParaContinuar(); // Movido para o controller
     }
 }

@@ -1,3 +1,0 @@
-1;coleira;Coleira para cachorros pequenos;17.99;10
-2;Rony;          sem;30.0;10
-4;Fernanda;Fernanda é uma garota da vida;2.5;1

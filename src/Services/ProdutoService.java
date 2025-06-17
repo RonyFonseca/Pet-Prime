@@ -69,23 +69,13 @@ public class ProdutoService {
     public List<Produto> listarTodos() {
         return new ArrayList<>(produtos);
     }
-    // precisa haver um metodo remover
+
     public boolean remover(int id) {
-        boolean removed = produtos.removeIf(p -> p.getIdProduto() == id); // percorre os IDs e verifica se são iguais
+        boolean removed = produtos.removeIf(p -> p.getIdProduto() == id);
         if (removed) salvarArquivo();
         return removed;
     }
 
-    public void atualizarEstoque(int idProduto, int novaQuantidade) {
-        Optional<Produto> produtoOpt = buscarPorId(idProduto);
-        if (produtoOpt.isPresent()) {
-            Produto produto = produtoOpt.get();
-            produto.setEstoque(novaQuantidade);
-            salvar(produto); // O método salvar já lida com a remoção e adição porém, né
-        } else {
-            System.out.println("Produto com ID " + idProduto + " não encontrado para atualizar estoque.");
-        }
-    }
     public static String lerString(String msg) {
         System.out.print(msg + ": ");
         return scanner.nextLine().trim();
@@ -110,11 +100,11 @@ public class ProdutoService {
             try {
                 System.out.print(msg + ": ");
                 double valor = scanner.nextDouble();
-                scanner.nextLine(); // Consumir nova linha
+                scanner.nextLine();
                 return valor;
             } catch (InputMismatchException e) {
                 System.out.println("Entrada inválida. Por favor, insira um número decimal (ex: 10.5).");
-                scanner.nextLine(); // Consumir entrada inválida
+                scanner.nextLine();
             }
         }
     }

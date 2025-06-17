@@ -49,7 +49,7 @@ public class Services {
         return data;
     }
 
-    public static Boolean criarAquivo(String nome, String servico){
+    public static Boolean criarArquivo(String nome, String servico){
         final String pathName = path+"atendimento.txt";
         try{
             if(avaliarArquivo()){
@@ -87,7 +87,7 @@ public class Services {
         return null;
     }
 
-    public static Boolean lerAquivo(){
+    public static Boolean lerArquivo(){
         final String pathName = path+"atendimento.txt";
         try{
             ArrayList<String> arquivo = passarTxtPraArray(pathName);
@@ -101,9 +101,11 @@ public class Services {
             arquivo.set(contador-3, valorAntigo+" | Termino: "+ hora()+"-hrs");
 
             BufferedWriter file1 = new BufferedWriter(new FileWriter(pathName));
+
             for(int i=0; i<arquivo.size(); i++){
                 file1.write(arquivo.get(i)+"\n");
             }
+
             file1.close();
             System.out.println("Atendimento finalizado com sucesso!");
             return true;
@@ -139,7 +141,6 @@ public class Services {
             if(valorAntigo.contains("Termino")){
                 return true;
             } else {
-
                 return false;
             }
 
@@ -224,7 +225,7 @@ public class Services {
                     minutos1 = (Double.parseDouble(digitosFinalMinutos) - Double.parseDouble(digitosIniciaisMinutos));
                 } else {
                     horas-=1;
-                    int min = (int) ((60 -Double.parseDouble(digitosIniciaisMinutos)) + (int) Double.parseDouble(digitosFinalMinutos));
+                    int min = (int) ((60 - Double.parseDouble(digitosIniciaisMinutos)) + (int) Double.parseDouble(digitosFinalMinutos));
                     minutos1 =min;
                 }
 

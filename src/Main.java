@@ -14,6 +14,7 @@ public class Main {
 
     public static void main(String[] args) {
         while (true) {
+
             FuncionarioController sistemaDeFuncionario = new FuncionarioController();
             Boolean result;
 
