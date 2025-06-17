@@ -23,25 +23,21 @@ Um sistema de terminal em **Java puro** para gestão de um PetShop completo, com
 ## 🧱 Estrutura do Projeto
 
 ```bash
-PetPrime/
+Pet-Prime/
+├── .idea/
+├── data/                     # Persistência em arquivos (.txt)
+├── out/                      # Arquivos compilados
 ├── src/
-│   ├── Main.java
-│   ├── Modules/
-│   │   ├── Pessoa.java
-│   │   ├── Cliente.java
-│   │   ├── Funcionario.java
-│   │   ├── Produto.java
-│   │   ├── Servico.java
-│   │   ├── Agendamento.java
-│   │   └── Estoque.java
-│   └── Services/
-│       ├── EstoqueService.java
-│       ├── VendaService.java
-│       └── AgendamentoService.java
-├── data/                  # Simulação de persistência em .txt
-│   ├── usuarios.txt
-│   ├── estoque.txt
-│   └── atendimentos.txt
+│   ├── Controllers/
+│   │   ├── Relatorios/
+│   │   ├── Servicos/
+│   │   ├── FuncionarioController.java
+│   │   ├── ProdutoController.java
+│   │   └── RelatorioController.java
+│   ├── Models/
+│   ├── Services/
+│   ├── View/
+│   └── Main.java
 └── README.md
 
 💻 Tecnologias Utilizadas
